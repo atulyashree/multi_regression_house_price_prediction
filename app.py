@@ -1,12 +1,10 @@
 import numpy as np
 from flask import Flask, request, jsonify, render_template
-from flask_ngrok import run_with_ngrok
 import pickle
 
 
 app = Flask(__name__)
 model = pickle.load(open('/content/drive/My Drive/multiregression.pkl','rb'))
-run_with_ngrok(app)
 
 @app.route('/')
 def home():
@@ -48,7 +46,7 @@ def predict():
         
     return render_template('index.html', prediction_text='Regression Model  has predicted the price of home based on various parameters is {}'.format(prediction))
 
-
-app.run()
+if __name__ == "__main__"
+app.run(debug =True)
 
 # print("the predicted price is : %.f"  %(regressor.predict([[2190.0,3,3,3,1,1]])))
